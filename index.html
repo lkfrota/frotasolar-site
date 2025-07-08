@@ -86,6 +86,12 @@
         }
 
         /* Estilo para a seção Hero com imagem de fundo */
+        #hero-top {
+            background-color: white; /* Fundo branco para o logo e título */
+            padding: 2rem 0; /* Padding para espaçamento */
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra suave */
+        }
         #hero {
             background-image: url('mais bela.webp'); /* Placeholder de imagem de fundo */
             background-size: cover;
@@ -136,14 +142,15 @@
 
     <!-- Conteúdo Principal da Página -->
     <main class="container mx-auto px-6 py-8 md:py-16">
+        <section id="hero-top" class="text-center">
+            <!-- LOGOTIPO: Substitua 'https://placehold.co/...' pelo caminho do seu PNG do logotipo -->
+            <img src="logo menor e nome.png" alt="Logo Frota Solar" class="mb-4 max-w-full h-auto mx-auto">
+        </section>
 
         <!-- Seção Hero: Introdução, Logo e Chamada para Ação -->
         <section id="hero" class="text-center min-h-[70vh] flex flex-col justify-center items-center py-16">
-            <div class="bg-white p-4 rounded-lg shadow-lg mb-8"> 
-                <img src="logo menor e nome.png" alt="Logo Frota Solar" class="max-w-full h-auto">
-            </div>
-            
-            <h1 class="font-quantico text-5xl md:text-7xl font-bold mb-4 leading-tight">Eletricidade Solar</h1>
+        
+            <h1 class="font-quantico text-5xl md:text-7xl font-bold mb-4 leading-tight">Eletrificação com Painéis Solares</h1>
             <div class="bg-black bg-opacity-40 p-4 rounded-lg max-w-4xl mx-auto mb-8"> 
                 <p class="text-xl md:text-3xl font-semibold text-white"> 
                     Geração local, limpa, silenciosa, durável e elegante!
