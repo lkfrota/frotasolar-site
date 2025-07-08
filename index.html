@@ -1,176 +1,431 @@
-﻿<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Frota Solar</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quantico&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #fcb040;
-      --secondary: #2e2e2e;
-      --background: #ffffff;
-      --accent: #00a9e0;
-    }
-    body {
-      font-family: 'Quantico', sans-serif;
-      margin: 0;
-      background: var(--background);
-      color: var(--secondary);
-      line-height: 1.6;
-    }
-    header, section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h1 {
-      color: var(--primary);
-    }
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: var(--accent);
-    }
-    .benefits, .services, .types, .about, .projects {
-      display: grid;
-      gap: 20px;
-    }
-    .benefit, .service, .type, .project {
-      background: #f9f9f9;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-    .logos {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: center;
-      justify-content: center;
-    }
-    .logos img {
-      height: 50px;
-      max-width: 120px;
-      object-fit: contain;
-    }
-    .project img {
-      width: 100%;
-      max-height: 300px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-    blockquote {
-      margin-top: 10px;
-      font-style: italic;
-    }
-    cite {
-      display: block;
-      margin-top: 5px;
-      font-weight: bold;
-    }
-    footer {
-      background: #eee;
-      padding: 30px 20px;
-      text-align: center;
-    }
-    .logo {
-      display: block;
-      margin: 0 auto 20px;
-      max-width: 200px;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frota Solar – Eletricidade Solar</title>
+    
+    <!-- Carregamento do Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Carregamento das fontes Inter e Quantico do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para ícones (NOVO: Adicionado para o ícone do WhatsApp) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0V4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    @media (max-width: 768px) {
-      header, section {
-        padding: 40px 16px;
-      }
-      h2 {
-        font-size: 1.5rem;
-      }
-      .logos img {
-        max-width: 100px;
-        height: auto;
-      }
-      .project img {
-        max-height: 200px;
-      }
-    }
-  </style>
+    <style>
+        /* Estilos base para o corpo do documento e fontes */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f7f4; /* Off-white para um visual limpo */
+            color: #334155; /* Slate-700 para texto principal */
+        }
+        .font-quantico {
+            font-family: 'Quantico', sans-serif;
+        }
+        /* Estilos para links de navegação com transição suave */
+        .nav-link {
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #2563eb; /* blue-600 */
+            border-bottom-color: #2563eb;
+        }
+        /* Estilos para botões de ação com transição suave e efeito de elevação */
+        .action-button {
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .action-button:hover {
+            transform: translateY(-2px);
+        }
+        /* Configurações de rolagem para seções, compensando o cabeçalho fixo */
+        section {
+            scroll-margin-top: 5rem; /* Espaço para o cabeçalho fixo */
+        }
+        #hero {
+            scroll-margin-top: 0; /* A seção hero vai para o topo da página */
+        }
+
+        /* Estilo para o botão WhatsApp fixo */
+        #fixed-whatsapp-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            background-color: #25D366; /* Cor do WhatsApp */
+            color: white;
+            padding: 1rem;
+            border-radius: 9999px; /* Botão redondo */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: bold;
+            font-size: 1.125rem; /* text-lg */
+            transition: all 0.3s ease-in-out;
+            transform: scale(1);
+        }
+        #fixed-whatsapp-button:hover {
+            background-color: #1DA851; /* Tom mais escuro no hover */
+            transform: scale(1.05);
+        }
+        /* Oculta o texto do botão em telas muito pequenas para economizar espaço */
+        @media (max-width: 640px) { /* sm breakpoint */
+            #fixed-whatsapp-button span {
+                display: none;
+            }
+            #fixed-whatsapp-button {
+                width: 3.5rem; /* Tamanho fixo para o ícone */
+                height: 3.5rem;
+                padding: 0;
+            }
+        }
+
+        /* Estilo para a seção Hero com imagem de fundo */
+        #hero {
+            background-image: url('https://placehold.co/1920x1080/D1FAE5/065F46?text=FROTA+SOLAR+BACKGROUND'); /* Placeholder de imagem de fundo */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white; /* Garante que o texto seja legível sobre a imagem */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Sombra no texto para melhor contraste */
+        }
+        #hero h1, #hero p {
+            color: white; /* Força a cor branca para títulos e parágrafos na hero */
+        }
+    </style>
 </head>
-<body>
+<body class="antialiased">
 
-  <!-- Cabeçalho com logo e slogan -->
-  <header>
-    <img src="logo menor e nome.png" alt="Frota Solar" class="logo">
-    <p><strong>ELETRICIDADE SOLAR</strong> – Geração local, limpa, silenciosa, durável e elegante!</p>
-  </header>
+    <!-- Cabeçalho Fixo com Navegação -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logotipo da Empresa (Placeholder) -->
+            <a href="#hero" class="font-quantico text-2xl font-bold text-blue-700">Frota Solar</a>
+            
+            <!-- Menu de Navegação para Desktop -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#hero" class="nav-link text-gray-600 border-b-2 border-transparent pb-1">Início</a>
+                <a href="#vantagens" class="nav-link text-gray-600 border-b-2 border-transparent pb-1">Vantagens</a>
+                <a href="#servicos" class="nav-link text-gray-600 border-b-2 border-transparent pb-1">Serviços</a>
+                <a href="#sobre-nos" class="nav-link text-gray-600 border-b-2 border-transparent pb-1">Sobre Nós</a>
+                <a href="#contato" class="nav-link text-gray-600 border-b-2 border-transparent pb-1">Contato</a>
+            </div>
+            
+            <!-- Botão de Menu para Mobile -->
+            <div class="flex items-center md:hidden">
+                <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Menu Mobile (oculto por padrão) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+            <a href="#hero" class="block text-gray-600 py-2 px-6 hover:bg-gray-50">Início</a>
+            <a href="#vantagens" class="block text-gray-600 py-2 px-6 hover:bg-gray-50">Vantagens</a>
+            <a href="#servicos" class="block text-gray-600 py-2 px-6 hover:bg-gray-50">Serviços</a>
+            <a href="#sobre-nos" class="block text-gray-600 py-2 px-6 hover:bg-gray-50">Sobre Nós</a>
+            <a href="#contato" class="block text-gray-600 py-2 px-6 hover:bg-gray-50">Contato</a>
+        </div>
+    </header>
 
-  <!-- Seção: Vantagens da energia solar -->
-  <section class="benefits">
-    <h2>Por que escolher a energia solar?</h2>
-    <div class="benefit">💰 <strong>Economia imediata e duradoura:</strong> Reduza drasticamente sua conta de luz e proteja-se contra aumentos tarifários.</div>
-    <div class="benefit">📈 <strong>Retorno financeiro com baixo risco:</strong> Investimento com ótimo retorno e mínima manutenção.</div>
-    <div class="benefit">🌱 <strong>Sustentabilidade com autonomia:</strong> Energia limpa, silenciosa e gerada por você mesmo.</div>
-    <div class="benefit">🏠 <strong>Valorização do imóvel e da marca:</strong> Mais valor para seu imóvel ou negócio e imagem positiva no mercado.</div>
-  </section>
+    <!-- Conteúdo Principal da Página -->
+    <main class="container mx-auto px-6 py-8 md:py-16">
 
-  <!-- Seção: Serviços e diferenciais -->
-  <section class="services">
-    <h2>Nossos serviços e diferenciais</h2>
-    <div class="service">🔌 Integração completa com o sistema elétrico: projetos on-grid, off-grid e zero-grid.</div>
-    <div class="service">🔧 Instalação e comissionamento profissional, com acompanhamento técnico especializado.</div>
-    <div class="service">📊 Otimização energética e de custos, buscando a melhor relação entre investimento e benefício.</div>
-    <div class="service">📋 Gestão contínua e suporte pós-instalação, para você aproveitar o máximo do sistema solar.</div>
-  </section>
+        <!-- Seção Hero: Introdução, Logo e Chamada para Ação -->
+        <section id="hero" class="text-center min-h-[70vh] flex flex-col justify-center items-center py-16">
+            <!-- Logo com Nome (Placeholder) -->
+            <img src="https://placehold.co/300x100/FFFFFF/000000?text=FROTA+SOLAR+LOGO" alt="Logo Frota Solar" class="mb-8 max-w-full h-auto">
+            
+            <h1 class="font-quantico text-5xl md:text-7xl font-bold mb-4 leading-tight">Frota Solar</h1>
+            <p class="text-lg md:text-2xl font-semibold mb-8 max-w-4xl">
+                Geração local, limpa, silenciosa, durável e elegante!
+            </p>
+            <!-- O botão "Fale Conosco" original foi removido daqui e substituído pelo botão fixo de WhatsApp -->
+        </section>
 
-  <!-- Seção: Tipos de sistemas e logos de marcas -->
-  <section class="types">
-    <h2>Tipos de sistemas e marcas parceiras</h2>
-    <div class="type">On-grid: conectado à rede, com compensação de créditos.</div>
-    <div class="type">Off-grid: independente, ideal para locais isolados.</div>
-    <div class="type">Zero-grid: geração sem injeção na rede pública.</div>
-    <div class="logos">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Canadian_Solar_logo.svg" alt="Canadian Solar" />
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/JA_Solar_Logo.svg" alt="JA Solar" />
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Huawei_Standard_logo.svg" alt="Huawei" />
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Growatt_logo.svg" alt="Growatt" />
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Solis-logo.svg" alt="Solis" />
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Fronius_logo.svg" alt="Fronius" />
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/WEG_logo.svg" alt="WEG" />
-    </div>
-  </section>
+        <!-- Seção Vantagens -->
+        <section id="vantagens" class="py-16 md:py-24 bg-blue-50 rounded-xl shadow-inner">
+            <div class="text-center max-w-4xl mx-auto px-6">
+                <h2 class="font-quantico text-4xl md:text-5xl font-bold text-blue-700 mb-8">Vantagens da Energia Solar</h2>
+                <p class="text-lg text-gray-700 mb-10">
+                    A energia solar oferece inúmeras vantagens para uso doméstico, rural e comercial. Com retorno do investimento em 3 a 6 anos, é ideal para reduzir custos com equipamentos de alto consumo como ar-condicionado e aquecedores. Uma tecnologia consolidada que garante economia e sustentabilidade.
+                </p>
 
-  <!-- Seção: Projetos realizados -->
-  <section class="projects">
-    <h2>Projetos realizados</h2>
-    <div class="project">
-      <img src="https://www.frotasolar.com.br/img/slider2.jpg" alt="Projeto Angela - Curitiba">
-      <blockquote>
-        “Senti que são profissionais com grande capacidade técnica..."
-        <cite>Angela, Bairro São Lourenço - Curitiba</cite>
-      </blockquote>
-    </div>
-    <!-- Para adicionar mais projetos, replique a div .project acima e substitua a imagem e o texto conforme necessário -->
-  </section>
+                <h3 class="font-quantico text-3xl font-bold text-green-600 mb-6">Benefícios para Todos</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg text-gray-700 text-left list-disc pl-5 mb-10">
+                    <li>Geração da energia projetada desde o 1º dia</li>
+                    <li>Limpeza dos painéis como única ação preventiva</li>
+                    <li>Garantias longas e seguro barato</li>
+                    <li>Retorno do investimento a partir de 3 anos</li>
+                    <li>Opção de substituir a fatura de energia pela parcela do financiamento</li>
+                    <li>Proteção total contra inflação elétrica e tarifas extras por pelo menos 25 anos</li>
+                    <li>Valorização do imóvel</li>
+                    <li>Possibilidade de usar a energia gerada em outros imóveis também</li>
+                </ul>
 
-  <!-- Seção: Sobre a empresa -->
-  <section class="about">
-    <h2>Quem somos</h2>
-    <p>Somos uma empresa especializada em soluções solares de pequeno porte, com foco em residências, comércios e produtores rurais. Atuamos com seriedade, conhecimento técnico e compromisso com resultados reais.</p>
-    <p><strong>Missão:</strong> Promover a autonomia energética e o uso inteligente da energia solar como meio de desenvolvimento sustentável e econômico.</p>
-    <p><strong>Valores:</strong> Clareza, integridade, excelência técnica e compromisso com o cliente.</p>
-  </section>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                    <!-- Vantagens para Empresas -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                        <h3 class="font-quantico text-xl font-bold text-green-600 mb-4">Para Empresas</h3>
+                        <ul class="text-gray-700 text-left space-y-2 list-disc pl-5">
+                            <li>Opção de desinstalar e levar para novo local em caso de mudança.</li>
+                            <li>Grande redução no custo operacional com equipamentos de alto consumo.</li>
+                            <li>Possibilidade de sombrear estacionamentos enquanto gera energia.</li>
+                            <li>Agrega perfil de sustentabilidade ambiental à marca.</li>
+                        </ul>
+                    </div>
+                    <!-- Vantagens para Produtor Rural -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                        <h3 class="font-quantico text-xl font-bold text-green-600 mb-4">Para Produtor Rural ou Chácaras de Lazer</h3>
+                        <ul class="text-gray-700 text-left space-y-2 list-disc pl-5">
+                            <li>Facilidade de dispor de áreas ensolaradas.</li>
+                            <li>Linhas de crédito especiais para energia solar no campo.</li>
+                            <li>Facilidade de limpeza e inspeção em usinas de solo.</li>
+                        </ul>
+                    </div>
+                    <!-- Vantagens para Uso Doméstico -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                        <h3 class="font-quantico text-xl font-bold text-green-600 mb-4">Para Uso Doméstico</h3>
+                        <ul class="text-gray-700 text-left space-y-2 list-disc pl-5">
+                            <li>Geração silenciosa e zero complicações.</li>
+                            <li>Instalação não requer reformas ou quebradeira na casa.</li>
+                            <li>Conforto do lar sem pesar no bolso.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- Rodapé com contatos -->
-  <footer>
-    <p>Entre em contato: <br>
-      <strong>Email:</strong> lincoln.frotasolar@gmail.com<br>
-      <strong>WhatsApp:</strong> (41) 99935-8444<br>
-      <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/frotasolar" target="_blank">https://www.linkedin.com/company/frotasolar/</a>
-    </p>
-  </footer>
+        <!-- Seção Da Luz do Sol, a Energia Elétrica -->
+        <section id="luz-eletrica" class="py-16 md:py-24">
+            <div class="text-center max-w-3xl mx-auto px-6">
+                <h2 class="font-quantico text-4xl md:text-5xl font-bold text-blue-700 mb-8">Da Luz do Sol, a Energia Elétrica</h2>
+                <p class="text-lg text-gray-700 mb-6">
+                    Transforme a luz do sol em energia elétrica para seus equipamentos. A aplicação de sistemas solares é simples e se integra facilmente ao seu imóvel.
+                </p>
+                <p class="text-lg text-gray-700 mb-10">
+                    Nossa engenharia garante o máximo aproveitamento da energia solar, com apoio completo até sua autonomia.
+                </p>
+            </div>
+        </section>
 
+        <!-- Seção Nossos Serviços -->
+        <section id="servicos" class="py-16 md:py-24 bg-blue-50 rounded-xl shadow-inner">
+            <div class="text-center max-w-5xl mx-auto px-6">
+                <h2 class="font-quantico text-4xl md:text-5xl font-bold text-blue-700 mb-8">Nossos Serviços</h2>
+                <p class="text-2xl font-bold text-gray-700 mb-8">ON-GRID, OFF-GRID E HÍBRIDOS</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Serviço: Consultoria -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 flex flex-col items-center text-center">
+                        <div class="text-5xl mb-4 text-yellow-500">💡</div>
+                        <h3 class="font-quantico text-xl font-bold text-blue-700 mb-3">Consultoria para a Demanda</h3>
+                        <p class="text-gray-700">Orientação completa para entender sua demanda de consumo elétrico e as condições do imóvel.</p>
+                    </div>
+                    <!-- Serviço: Engenharia do Sistema -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 flex flex-col items-center text-center">
+                        <div class="text-5xl mb-4 text-yellow-500">📐</div>
+                        <h3 class="font-quantico text-xl font-bold text-blue-700 mb-3">Engenharia do Sistema</h3>
+                        <p class="text-gray-700">Design da melhor solução fotovoltaica, com máxima confiabilidade e aproveitamento da tecnologia.</p>
+                    </div>
+                    <!-- Serviço: Planejamento e Execução -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 flex flex-col items-center text-center">
+                        <div class="text-5xl mb-4 text-yellow-500">🛠️</div>
+                        <h3 class="font-quantico text-xl font-bold text-blue-700 mb-3">Planejamento e Execução do Projeto</h3>
+                        <p class="text-gray-700">Gerenciamento completo da instalação do sistema, incluindo acompanhamento de terceiros.</p>
+                    </div>
+                    <!-- Serviço: Homologação -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 flex flex-col items-center text-center">
+                        <div class="text-5xl mb-4 text-yellow-500">📄</div>
+                        <h3 class="font-quantico text-xl font-bold text-blue-700 mb-3">Homologação</h3>
+                        <p class="text-gray-700">Serviço essencial para sistemas on-grid, com apoio jurídico para a liberação da conexão.</p>
+                    </div>
+                    <!-- Serviço: Comissionamento e Pós-Venda -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 flex flex-col items-center text-center">
+                        <div class="text-5xl mb-4 text-yellow-500">✅</div>
+                        <h3 class="font-quantico text-xl font-bold text-blue-700 mb-3">Comissionamento e Pós-Venda</h3>
+                        <p class="text-gray-700">Testes de funcionamento, acompanhamento remoto e suporte contínuo para sua autoconfiança.</p>
+                    </div>
+                    <!-- Serviço: Híbrido (Texto adicional) -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 flex flex-col items-center text-center">
+                        <div class="text-5xl mb-4 text-yellow-500">⚡</div>
+                        <h3 class="font-quantico text-xl font-bold text-blue-700 mb-3">Mais Autonomia e Versatilidade</h3>
+                        <p class="text-gray-700">Sistemas híbridos para controle total do consumo e injeção de energia, com ou sem baterias.</p>
+                    </div>
+                </div>
+
+                <!-- Nossos Diferenciais (Movido para cá) -->
+                <h3 class="font-quantico text-3xl font-bold text-green-600 mt-10 mb-6">Nossos Diferenciais</h3>
+                <ul class="grid grid-cols-1 gap-4 text-lg text-gray-700 text-left list-none pl-0">
+                    <li class="flex items-start mb-2">
+                        <svg class="w-5 h-5 mr-2 mt-1 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <span class="font-semibold text-blue-700">Foco:</span> Sucesso da jornada do cliente.
+                    </li>
+                    <li class="flex items-start mb-2">
+                        <svg class="w-5 h-5 mr-2 mt-1 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <span class="font-semibold text-blue-700">Expectativa do Cliente:</span> Buscamos entender profundamente.
+                    </li>
+                    <li class="flex items-start mb-2">
+                        <svg class="w-5 h-5 mr-2 mt-1 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <span class="font-semibold text-blue-700">Relação no Projeto:</span> Instrutiva e transparente.
+                    </li>
+                    <li class="flex items-start mb-2">
+                        <svg class="w-5 h-5 mr-2 mt-1 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <span class="font-semibold text-blue-700">Dimensionamento:</span> Sempre enxuto e otimizado.
+                    </li>
+                    <li class="flex items-start mb-2">
+                        <svg class="w-5 h-5 mr-2 mt-1 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <span class="font-semibold text-blue-700">Créditos de kWh:</span> Planejamento para não perdê-los.
+                    </li>
+                    <li class="flex items-start mb-2">
+                        <svg class="w-5 h-5 mr-2 mt-1 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <span class="font-semibold text-blue-700">Retorno do Investimento:</span> Projeção completa, sem omissão de custos.
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 mr-2 mt-1 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <span class="font-semibold text-blue-700">Pós-vendas:</span> Instrutivo e focado na autonomia do cliente.
+                    </li>
+                </ul>
+                <!-- Fim da Nova Sub-seção -->
+            </div>
+        </section>
+
+        <!-- Seção Sobre Nós (atualizada com Valores e Missão) -->
+        <section id="sobre-nos" class="py-16 md:py-24">
+            <div class="text-center max-w-4xl mx-auto px-6">
+                <h2 class="font-quantico text-4xl md:text-5xl font-bold text-blue-700 mb-8">Sobre Nós</h2>
+                
+                <!-- Nossa Missão -->
+                <h3 class="font-quantico text-3xl font-bold text-green-600 mb-6">Nossa Missão</h3>
+                <p class="text-lg text-gray-700 mb-10">
+                    Entregar autonomia elétrica no cotidiano do cliente, com expectativas práticas atendidas e satisfação de todos os envolvidos.
+                </p>
+
+                <!-- Nossos Valores -->
+                <h3 class="font-quantico text-3xl font-bold text-green-600 mb-6">Nossos Valores</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg text-gray-700 text-left list-disc pl-5">
+                    <li><span class="font-semibold text-blue-700">Transparência:</span> Agir com clareza e honestidade em todas as interações.</li>
+                    <li><span class="font-semibold text-blue-700">Inovação:</span> Buscar constantemente as melhores e mais eficientes soluções em energia solar.</li>
+                    <li><span class="font-semibold text-blue-700">Sustentabilidade:</span> Promover um futuro mais verde e consciente através da energia limpa.</li>
+                    <li><span class="font-semibold text-blue-700">Comprometimento:</span> Dedicação total para garantir a satisfação e os resultados esperados pelos clientes.</li>
+                    <li><span class="font-semibold text-blue-700">Excelência:</span> Entregar serviços e produtos de alta qualidade, superando as expectativas.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Seção Clientes e Realizações (Placeholder) -->
+        <section id="clientes" class="py-16 md:py-24 bg-gray-100 rounded-xl shadow-inner">
+            <div class="text-center max-w-4xl mx-auto px-6">
+                <h2 class="font-quantico text-4xl md:text-5xl font-bold text-blue-700 mb-8">Clientes e Realizações</h2>
+                <p class="text-lg text-gray-700 mb-10">
+                    Confira algumas de nossas instalações e o que nossos clientes dizem sobre a Frota Solar.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Placeholder para imagem de instalação 1 -->
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <img src="https://placehold.co/600x400/E0E7FF/334155?text=Instalação+Solar+1" alt="Instalação Solar 1" class="rounded-lg mb-4 w-full h-auto">
+                        <p class="italic text-gray-600">"A Frota Solar entregou exatamente o que prometeu e superou minhas expectativas!" - Cliente Residencial</p>
+                    </div>
+                    <!-- Placeholder para imagem de instalação 2 -->
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <img src="https://placehold.co/600x400/E0E7FF/334155?text=Instalação+Solar+2" alt="Instalação Solar 2" class="rounded-lg mb-4 w-full h-auto">
+                        <p class="italic text-gray-600">"Reduzimos drasticamente nossos custos de energia. Serviço impecável!" - Empresa Parceira</p>
+                    </div>
+                </div>
+                <h3 class="font-quantico text-3xl font-bold text-blue-700 mt-16 mb-8">Grandes Marcas Mundiais</h3>
+                <p class="text-lg text-gray-700">
+                    Trabalhamos com os melhores fornecedores e parceiros para garantir a qualidade e a durabilidade dos nossos sistemas.
+                </p>
+                <!-- Placeholder para logotipos de fornecedores -->
+                <div class="flex flex-wrap justify-center items-center gap-8 mt-8">
+                    <img src="https://placehold.co/120x60/D1FAE5/065F46?text=Marca+A" alt="Marca A" class="h-12 opacity-75 hover:opacity-100 transition-opacity">
+                    <img src="https://placehold.co/120x60/D1FAE5/065F46?text=Marca+B" alt="Marca B" class="h-12 opacity-75 hover:opacity-100 transition-opacity">
+                    <img src="https://placehold.co/120x60/D1FAE5/065F46?text=Marca+C" alt="Marca C" class="h-12 opacity-75 hover:opacity-100 transition-opacity">
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Contato -->
+        <section id="contato" class="py-16 md:py-24 bg-blue-50 rounded-xl shadow-inner">
+            <div class="text-center max-w-3xl mx-auto px-6">
+                <h2 class="font-quantico text-4xl md:text-5xl font-bold text-blue-700 mb-8">Fale Conosco</h2>
+                <p class="text-lg text-gray-700 mb-10">
+                    Estamos prontos para te ajudar a dar o próximo passo rumo à autonomia energética. Entre em contato e solicite um orçamento!
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- O botão WhatsApp foi removido daqui conforme solicitado -->
+                    <a href="tel:+5541999358444" class="action-button bg-white p-6 rounded-xl shadow-md hover:shadow-xl border border-gray-100">
+                        <div class="text-5xl mb-3 text-blue-500">📱</div>
+                        <h3 class="font-bold text-xl text-gray-700 mb-2">Ligar</h3>
+                        <p class="text-gray-600">(41) 99935-8444</p>
+                    </a>
+                    <a href="mailto:lincoln.frotasolar@gmail.com" class="action-button bg-white p-6 rounded-xl shadow-md hover:shadow-xl border border-gray-100">
+                        <div class="text-5xl mb-3 text-yellow-500">✉️</div>
+                        <h3 class="font-bold text-xl text-gray-700 mb-2">E-mail</h3>
+                        <p class="text-gray-600">lincoln.frotasolar@gmail.com</p>
+                    </a>
+                    <!-- Novos links de redes sociais -->
+                    <a href="https://www.linkedin.com/company/frota-solar/" target="_blank" class="action-button bg-white p-6 rounded-xl shadow-md hover:shadow-xl border border-gray-100">
+                        <div class="text-5xl mb-3 text-blue-700">👔</div>
+                        <h3 class="font-bold text-xl text-gray-700 mb-2">LinkedIn</h3>
+                        <p class="text-gray-600">/frota-solar</p>
+                    </a>
+                    <a href="https://www.facebook.com/frotasolar" target="_blank" class="action-button bg-white p-6 rounded-xl shadow-md hover:shadow-xl border border-gray-100">
+                        <div class="text-5xl mb-3 text-blue-600">🔵</div>
+                        <h3 class="font-bold text-xl text-gray-700 mb-2">Facebook</h3>
+                        <p class="text-gray-600">/frotasolar</p>
+                    </a>
+                    <a href="https://www.instagram.com/frotasolar/" target="_blank" class="action-button bg-white p-6 rounded-xl shadow-md hover:shadow-xl border border-gray-100">
+                        <div class="text-5xl mb-3 text-pink-500">📸</div>
+                        <h3 class="font-bold text-xl text-gray-700 mb-2">Instagram</h3>
+                        <p class="text-gray-600">@frotasolar</p>
+                    </a>
+                </div>
+                <!-- Texto de localização adicionado -->
+                <p class="text-lg text-gray-700 mt-10">
+                    Estamos em Curitiba, mas atendemos toda a região.
+                </p>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Rodapé -->
+    <footer class="bg-gray-900 text-gray-300 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Frota Solar. Todos os direitos reservados.</p>
+            <p class="text-sm mt-2">Transformando a luz do sol em energia para você.</p>
+        </div>
+    </footer>
+
+    <!-- Botão WhatsApp Fixo (AGORA COM ÍCONE DO FONT AWESOME) -->
+    <a id="fixed-whatsapp-button" href="https://wa.me/5541999358444?text=Olá,%20estava%20no%20site%20e%20quero%20um%20atendimento%20por%20favor!" target="_blank" class="action-button">
+        <i class="fab fa-whatsapp text-3xl"></i> <!-- Ícone do WhatsApp do Font Awesome -->
+        <span>WhatsApp</span>
+    </a>
+
+    <!-- Script para o menu mobile -->
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            var mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Fechar o menu mobile ao clicar em um link
+        document.querySelectorAll('#mobile-menu a').forEach(item => {
+            item.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
