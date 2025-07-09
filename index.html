@@ -88,7 +88,7 @@
         /* Estilo para a seção Hero com imagem de fundo */
         #hero-top {
             background-color: white; /* Fundo branco para o logo e título */
-            padding: 2rem 0; /* Padding para espaçamento */
+            padding: 1rem 0; /* Padding para espaçamento */
             text-align: center;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra suave */
         }
@@ -144,7 +144,7 @@
     <main class="container mx-auto px-6 py-8 md:py-16">
         <section id="hero-top" class="text-center">
             <!-- LOGOTIPO: Substitua 'https://placehold.co/...' pelo caminho do seu PNG do logotipo -->
-            <img src="logo menor e nome.png" alt="Logo Frota Solar" class="mb-4 max-w-full h-auto mx-auto">
+            <img src="logo menor e nome.png" alt="Logo Frota Solar" class="w-48 h-auto mb-2 mx-auto">
         </section>
 
         <!-- Seção Hero: Introdução, Logo e Chamada para Ação -->
@@ -366,7 +366,7 @@
             <div class="text-center max-w-3xl mx-auto px-6">
                 <h2 class="font-quantico text-4xl md:text-5xl font-bold text-blue-700 mb-8">Fale Conosco</h2>
                 <p class="text-lg text-gray-700 mb-10">
-                    Estamos prontos para te ajudar a dar o próximo passo rumo à autonomia energética. Entre em contato e solicite um orçamento!
+                    Estamos prontos para te ajudar a dar o próximo passo rumo à autonomia energética. Entre em contato para saber mais!
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <!-- O botão WhatsApp foi removido daqui conforme solicitado -->
@@ -380,25 +380,28 @@
                         <h3 class="font-bold text-xl text-gray-700 mb-2">E-mail</h3>
                         <p class="text-gray-600">lincoln.frotasolar@gmail.com</p>
                     </a>
-                    <!-- Novos links de redes sociais -->
-                    <a href="https://www.linkedin.com/company/frota-solar/" target="_blank" class="action-button bg-white p-6 rounded-xl shadow-md hover:shadow-xl border border-gray-100">
-                        <div class="text-5xl mb-3 text-blue-700">👔</div>
-                        <h3 class="font-bold text-xl text-gray-700 mb-2">LinkedIn</h3>
-                        <p class="text-gray-600">/frota-solar</p>
+                </div>
+                <div class="flex flex-wrap justify-center items-center gap-6 mt-6">
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/5541999358444?text=Olá,%20estava%20no%20site%20e%20quero%20um%20atendimento%20por%20favor!" target="_blank" class="text-green-500 hover:text-green-700 transition-colors duration-300">
+                        <img src="wa-logo.png" alt="Logo WhatsApp" class="w-10 h-10">
                     </a>
-                    <a href="https://www.facebook.com/frotasolar" target="_blank" class="action-button bg-white p-6 rounded-xl shadow-md hover:shadow-xl border border-gray-100">
-                        <div class="text-5xl mb-3 text-blue-600">🔵</div>
-                        <h3 class="font-bold text-xl text-gray-700 mb-2">Facebook</h3>
-                        <p class="text-gray-600">/frotasolar</p>
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/company/frota-solar/" target="_blank" class="text-blue-700 hover:text-blue-900 transition-colors duration-300">
+                        <i class="fab fa-linkedin text-4xl"></i>
                     </a>
-                    <a href="https://www.instagram.com/frotasolar/" target="_blank" class="action-button bg-white p-6 rounded-xl shadow-md hover:shadow-xl border border-gray-100">
-                        <div class="text-5xl mb-3 text-pink-500">📸</div>
-                        <h3 class="font-bold text-xl text-gray-700 mb-2">Instagram</h3>
-                        <p class="text-gray-600">@frotasolar</p>
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/frotasolar" target="_blank" class="text-blue-600 hover:text-blue-800 transition-colors duration-300">
+                        <i class="fab fa-facebook-f text-4xl"></i>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/frotasolar/" target="_blank" class="text-pink-500 hover:text-pink-700 transition-colors duration-300">
+                        <i class="fab fa-instagram text-4xl"></i>
                     </a>
                 </div>
                 <!-- Texto de localização adicionado -->
-                <p class="text-lg text-gray-700 mt-10">
+                <p class="text-lg text-gray-700 mt-10 flex items-center justify-center gap-2">
+                    <img src="default_pin_icon.png" alt="Ícone de Localização" class="w-6 h-6 inline-block">
                     Estamos em Curitiba, mas atendemos toda a região.
                 </p>
             </div>
@@ -416,8 +419,7 @@
 
     <!-- Botão WhatsApp Fixo (AGORA COM ÍCONE DO FONT AWESOME) -->
     <a id="fixed-whatsapp-button" href="https://wa.me/5541999358444?text=Olá,%20estava%20no%20site%20e%20quero%20um%20atendimento%20por%20favor!" target="_blank" class="action-button">
-        <i class="fab fa-whatsapp text-3xl"></i> <!-- Ícone do WhatsApp do Font Awesome -->
-        <span>WhatsApp</span>
+        <img src="wa-logo.png" alt="Logo WhatsApp" class="w-10 h-10"> <!-- Seu ícone PNG -->
     </a>
 
     <!-- Script para o menu mobile -->
