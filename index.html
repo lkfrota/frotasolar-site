@@ -86,22 +86,97 @@
         }
 
         /* Estilo para a seção Hero com imagem de fundo */
-        #hero-top {
-            background-color: white; /* Fundo branco para o logo e título */
-            padding: 1rem 0; /* Padding para espaçamento */
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra suave */
-        }
         #hero {
             background-image: url('mais bela.webp'); /* Placeholder de imagem de fundo */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             color: white; /* Garante que o texto seja legível sobre a imagem */
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 1rem; 
             text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Sombra no texto para melhor contraste */
         }
         #hero h1, #hero p {
             color: white; /* Força a cor branca para títulos e parágrafos na hero */
+        }
+        /* Estilos para o carrossel */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%; /* Default para 1 item por vez */
+            box-sizing: border-box;
+            padding: 0 1rem; /* Espaçamento entre os itens */
+        }
+
+        /* Responsividade para o carrossel: exibir mais itens em telas maiores */
+        @media (min-width: 768px) { /* md breakpoint */
+            .carousel-item {
+                min-width: 50%; /* 2 itens por vez em tablets */
+            }
+        }
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .carousel-item {
+                min-width: 33.333%; /* 3 itens por vez em desktops */
+            }
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 9999px; /* Botões redondos */
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-button.prev {
+            left: 1rem;
+        }
+
+        .carousel-button.next {
+            right: 1rem;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            background-color: #cbd5e1; /* slate-300 */
+            border-radius: 9999px;
+            margin: 0 0.25rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: #2563eb; /* blue-600 */
         }
     </style>
 </head>
@@ -110,8 +185,13 @@
     <!-- Cabeçalho Fixo com Navegação -->
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logotipo da Empresa (Placeholder) -->
-            <a href="#hero" class="font-quantico text-2xl font-bold text-blue-700">Frota Solar</a>
+            <div class="flex items-center">
+                <!-- Logotipo da Empresa na barra de navegação -->
+                <a href="#hero" class="flex items-center text-blue-700 hover:text-blue-900 transition-colors duration-300">
+                    <img src="logo menor e nome.png" alt="Logo Frota Solar" class="h-10 w-auto mr-3"> <!-- Ajustado o tamanho do logo para a barra -->
+                    <span class="font-quantico text-2xl font-bold">Eletrificação com Painéis</span>
+                </a>
+            </div>
             
             <!-- Menu de Navegação para Desktop -->
             <div class="hidden md:flex items-center space-x-8">
@@ -142,21 +222,16 @@
 
     <!-- Conteúdo Principal da Página -->
     <main class="container mx-auto px-6 py-8 md:py-16">
-        <section id="hero-top" class="text-center">
-            <!-- LOGOTIPO: Substitua 'https://placehold.co/...' pelo caminho do seu PNG do logotipo -->
-            <img src="logo menor e nome.png" alt="Logo Frota Solar" class="w-80 h-auto mb-2 mx-auto">
-        </section>
-
         <!-- Seção Hero: Introdução, Logo e Chamada para Ação -->
-        <section id="hero" class="text-center min-h-[70vh] flex flex-col justify-center items-center py-16">
+        <section id="hero" class="text-center">
         
-            <h1 class="font-quantico text-5xl md:text-7xl font-bold mb-4 leading-tight">Eletrificação com Painéis Solares</h1>
+            <h1 class="font-quantico text-5xl md:text-7xl font-bold mb-4 leading-tight">Painéis Solares</h1>
             <div class="bg-black bg-opacity-40 p-4 rounded-lg max-w-4xl mx-auto mb-8"> 
                 <p class="text-xl md:text-3xl font-semibold text-white"> 
                     Geração local, limpa, silenciosa, durável e elegante!
                 </p>
             </div>
-            <!-- O botão "Fale Conosco" original foi removido daqui e substituído pelo botão fixo de WhatsApp -->
+            
         </section>
 
         <!-- Seção Vantagens -->
@@ -336,27 +411,69 @@
                 <p class="text-lg text-gray-700 mb-10">
                     Confira algumas de nossas instalações e o que nossos clientes dizem sobre a Frota Solar.
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Placeholder para imagem de instalação 1 -->
-                    <div class="bg-white p-4 rounded-lg shadow-md">
-                        <img src="https://placehold.co/600x400/E0E7FF/334155?text=Instalação+Solar+1" alt="Instalação Solar 1" class="rounded-lg mb-4 w-full h-auto">
-                        <p class="italic text-gray-600">"A Frota Solar entregou exatamente o que prometeu e superou minhas expectativas!" - Cliente Residencial</p>
+                <!-- Carrossel de Instalações -->
+                <div id="installations-carousel" class="carousel-container mb-12">
+                    <div class="carousel-inner">
+                        <!-- Item 1 -->
+                        <div class="carousel-item">
+                            <div class="bg-white p-4 rounded-lg shadow-md">
+                                <img src="https://placehold.co/600x400/E0E7FF/334155?text=Instalação+Solar+1" alt="Instalação Solar 1" class="rounded-lg mb-4 w-full h-auto">
+                                <p class="italic text-gray-600">"A Frota Solar entregou exatamente o que prometeu e superou minhas expectativas!" - Cliente Residencial</p>
+                            </div>
+                        </div>
+                        <!-- Item 2 -->
+                        <div class="carousel-item">
+                            <div class="bg-white p-4 rounded-lg shadow-md">
+                                <img src="https://placehold.co/600x400/E0E7FF/334155?text=Instalação+Solar+2" alt="Instalação Solar 2" class="rounded-lg mb-4 w-full h-auto">
+                                <p class="italic text-gray-600">"Reduzimos drasticamente nossos custos de energia. Serviço impecável!" - Empresa Parceira</p>
+                            </div>
+                        </div>
+                        <!-- Item 3 -->
+                        <div class="carousel-item">
+                            <div class="bg-white p-4 rounded-lg shadow-md">
+                                <img src="https://placehold.co/600x400/E0E7FF/334155?text=Instalação+Solar+3" alt="Instalação Solar 3" class="rounded-lg mb-4 w-full h-auto">
+                                <p class="italic text-gray-600">"Excelente suporte e instalação rápida. Recomendo!" - Cliente Rural</p>
+                            </div>
+                        </div>
+                        <!-- Item 4 -->
+                        <div class="carousel-item">
+                            <div class="bg-white p-4 rounded-lg shadow-md">
+                                <img src="https://placehold.co/600x400/E0E7FF/334155?text=Instalação+Solar+4" alt="Instalação Solar 4" class="rounded-lg mb-4 w-full h-auto">
+                                <p class="italic text-gray-600">"A melhor decisão para o meu negócio. Economia garantida!" - Comércio Local</p>
+                            </div>
+                        </div>
                     </div>
-                    <!-- Placeholder para imagem de instalação 2 -->
-                    <div class="bg-white p-4 rounded-lg shadow-md">
-                        <img src="https://placehold.co/600x400/E0E7FF/334155?text=Instalação+Solar+2" alt="Instalação Solar 2" class="rounded-lg mb-4 w-full h-auto">
-                        <p class="italic text-gray-600">"Reduzimos drasticamente nossos custos de energia. Serviço impecável!" - Empresa Parceira</p>
-                    </div>
+                    <button class="carousel-button prev" data-carousel="installations-carousel"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-button next" data-carousel="installations-carousel"><i class="fas fa-chevron-right"></i></button>
+                    <div class="carousel-dots" data-carousel="installations-carousel"></div>
                 </div>
                 <h3 class="font-quantico text-3xl font-bold text-blue-700 mt-16 mb-8">Grandes Marcas Mundiais</h3>
                 <p class="text-lg text-gray-700">
                     Trabalhamos com os melhores fornecedores e parceiros para garantir a qualidade e a durabilidade dos nossos sistemas.
                 </p>
-                <!-- Placeholder para logotipos de fornecedores -->
-                <div class="flex flex-wrap justify-center items-center gap-8 mt-8">
-                    <img src="https://placehold.co/120x60/D1FAE5/065F46?text=Marca+A" alt="Marca A" class="h-12 opacity-75 hover:opacity-100 transition-opacity">
-                    <img src="https://placehold.co/120x60/D1FAE5/065F46?text=Marca+B" alt="Marca B" class="h-12 opacity-75 hover:opacity-100 transition-opacity">
-                    <img src="https://placehold.co/120x60/D1FAE5/065F46?text=Marca+C" alt="Marca C" class="h-12 opacity-75 hover:opacity-100 transition-opacity">
+                <!-- Carrossel de Logotipos de Fornecedores -->
+                <div id="brands-carousel" class="carousel-container">
+                    <div class="carousel-inner">
+                        <!-- Placeholder para logotipos de fornecedores -->
+                        <div class="carousel-item">
+                            <img src="https://placehold.co/120x60/D1FAE5/065F46?text=Marca+A" alt="Marca A" class="h-12 opacity-75 hover:opacity-100 transition-opacity mx-auto">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://placehold.co/120x60/D1FAE5/065F46?text=Marca+B" alt="Marca B" class="h-12 opacity-75 hover:opacity-100 transition-opacity mx-auto">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://placehold.co/120x60/D1FAE5/065F46?text=Marca+C" alt="Marca C" class="h-12 opacity-75 hover:opacity-100 transition-opacity mx-auto">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://placehold.co/120x60/D1FAE5/065F46?text=Marca+D" alt="Marca D" class="h-12 opacity-75 hover:opacity-100 transition-opacity mx-auto">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://placehold.co/120x60/D1FAE5/065F46?text=Marca+E" alt="Marca E" class="h-12 opacity-75 hover:opacity-100 transition-opacity mx-auto">
+                        </div>
+                    </div>
+                    <button class="carousel-button prev" data-carousel="brands-carousel"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-button next" data-carousel="brands-carousel"><i class="fas fa-chevron-right"></i></button>
+                    <div class="carousel-dots" data-carousel="brands-carousel"></div>
                 </div>
             </div>
         </section>
@@ -438,6 +555,100 @@
             item.addEventListener('click', () => {
                 document.getElementById('mobile-menu').classList.add('hidden');
             });
+        });
+        // Lógica do Carrossel
+        function setupCarousel(carouselId) {
+            const carouselContainer = document.getElementById(carouselId);
+            if (!carouselContainer) return; // Sai se o carrossel não existir
+
+            const carouselInner = carouselContainer.querySelector('.carousel-inner');
+            const carouselItems = carouselInner.querySelectorAll('.carousel-item');
+            const prevButton = carouselContainer.querySelector('.carousel-button.prev');
+            const nextButton = carouselContainer.querySelector('.carousel-button.next');
+            const dotsContainer = carouselContainer.querySelector('.carousel-dots');
+
+            let currentIndex = 0;
+            let itemsPerPage = 1; // Default para mobile
+
+            // Função para atualizar itemsPerPage baseado na largura da tela
+            function updateItemsPerPage() {
+                if (window.innerWidth >= 1024) { // lg breakpoint
+                    itemsPerPage = 3;
+                } else if (window.innerWidth >= 768) { // md breakpoint
+                    itemsPerPage = 2;
+                } else {
+                    itemsPerPage = 1;
+                }
+                // Recalcula o transform para a nova quantidade de itens por página
+                updateCarousel();
+                createDots(); // Recria os dots se o número de páginas mudar
+            }
+
+            // Cria os indicadores (dots)
+            function createDots() {
+                dotsContainer.innerHTML = ''; // Limpa os dots existentes
+                const totalPages = Math.ceil(carouselItems.length / itemsPerPage);
+                for (let i = 0; i < totalPages; i++) {
+                    const dot = document.createElement('span');
+                    dot.classList.add('dot');
+                    if (i === Math.floor(currentIndex / itemsPerPage)) {
+                        dot.classList.add('active');
+                    }
+                    dot.addEventListener('click', () => {
+                        currentIndex = i * itemsPerPage;
+                        updateCarousel();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+            }
+
+            // Atualiza a posição do carrossel e os dots
+            function updateCarousel() {
+                // Garante que o currentIndex não exceda os limites
+                if (currentIndex < 0) {
+                    currentIndex = 0;
+                } else if (currentIndex >= carouselItems.length) {
+                    currentIndex = carouselItems.length - itemsPerPage; // Volta para o último conjunto visível
+                    if (currentIndex < 0) currentIndex = 0; // Caso haja menos itens que itensPerPage
+                }
+
+                const offset = -currentIndex * (carouselItems[0].offsetWidth);
+                carouselInner.style.transform = `translateX(${offset}px)`;
+
+                // Atualiza a classe 'active' nos dots
+                dotsContainer.querySelectorAll('.dot').forEach((dot, index) => {
+                    if (index === Math.floor(currentIndex / itemsPerPage)) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+
+                // Desabilita/habilita botões de navegação
+                prevButton.disabled = currentIndex === 0;
+                nextButton.disabled = currentIndex >= carouselItems.length - itemsPerPage;
+            }
+
+            // Event Listeners para os botões de navegação
+            prevButton.addEventListener('click', () => {
+                currentIndex -= itemsPerPage;
+                updateCarousel();
+            });
+
+            nextButton.addEventListener('click', () => {
+                currentIndex += itemsPerPage;
+                updateCarousel();
+            });
+
+            // Inicializa o carrossel
+            updateItemsPerPage(); // Define itens por página e atualiza o carrossel na carga
+            window.addEventListener('resize', updateItemsPerPage); // Atualiza ao redimensionar a janela
+        }
+
+        // Configura os carrosséis ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            setupCarousel('installations-carousel');
+            setupCarousel('brands-carousel');
         });
     </script>
 </body>
