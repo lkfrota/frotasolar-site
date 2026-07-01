@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frota Solar – Energia Solar Fotovoltaica em Curitiba e Região</title>
-    <meta name="description" content="Projetos de energia solar fotovoltaica em Curitiba e região. Instalação de painéis solares on-grid, off-grid e híbridos com engenharia otimizada, economia na conta de luz e retorno do investimento.">
+    <title>Frota Solar – Energia Solar em Curitiba | Eletricidade com Painéis</title>
+    <meta name="description" content="Projetos de energia solar em Curitiba e região. Instalação de painéis solares on-grid, off-grid e híbridos com engenharia otimizada, economia na conta de luz e retorno do investimento.">
     <link rel="canonical" href="https://www.frotasolar.com.br/">
 
     <!-- Favicon (micro-logo na aba do navegador) -->
@@ -14,8 +14,8 @@
     <!-- Open Graph (compartilhamento em WhatsApp, Facebook, LinkedIn) -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Frota Solar">
-    <meta property="og:title" content="Frota Solar – Energia Solar Fotovoltaica em Curitiba e Região">
-    <meta property="og:description" content="Projetos de energia solar fotovoltaica em Curitiba e região: painéis solares on-grid, off-grid e híbridos com engenharia otimizada e retorno do investimento.">
+    <meta property="og:title" content="Frota Solar – Energia Solar em Curitiba | Eletricidade com Painéis">
+    <meta property="og:description" content="Projetos de energia solar em Curitiba e região: painéis solares on-grid, off-grid e híbridos com engenharia otimizada e retorno do investimento.">
     <meta property="og:url" content="https://www.frotasolar.com.br/">
     <meta property="og:image" content="https://www.frotasolar.com.br/mais%20bela.webp">
     <meta property="og:image:alt" content="Instalação de painéis solares fotovoltaicos pela Frota Solar">
@@ -23,8 +23,8 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Frota Solar – Energia Solar Fotovoltaica em Curitiba e Região">
-    <meta name="twitter:description" content="Projetos de energia solar fotovoltaica em Curitiba e região: painéis solares on-grid, off-grid e híbridos com engenharia otimizada.">
+    <meta name="twitter:title" content="Frota Solar – Energia Solar em Curitiba | Eletricidade com Painéis">
+    <meta name="twitter:description" content="Projetos de energia solar em Curitiba e região: painéis solares on-grid, off-grid e híbridos com engenharia otimizada.">
     <meta name="twitter:image" content="https://www.frotasolar.com.br/mais%20bela.webp">
 
     <!-- Dados estruturados (Schema.org) para SEO local -->
@@ -59,8 +59,17 @@
     }
     </script>
 
-    <!-- Carregamento do Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS (pré-compilado, apenas as classes usadas) -->
+    <!--
+      MANUTENÇÃO: este styles.css é gerado a partir das classes presentes no index.html.
+      Se você ADICIONAR ou MUDAR classes do Tailwind no HTML (ex.: text-blue-700, md:grid-cols-4),
+      precisa RECOMPILAR, senão as classes novas não terão efeito visual. Para recompilar:
+          ./tailwindcss -c tailwind.config.js -i tailwind.input.css -o styles.css --minify
+      (o binário 'tailwindcss' é o CLI standalone do Tailwind v3; baixe em
+       https://github.com/tailwindlabs/tailwindcss/releases se não o tiver localmente)
+      Classes que já existiam continuam funcionando normalmente sem recompilar.
+    -->
+    <link rel="stylesheet" href="styles.css">
     
     <!-- Carregamento das fontes Inter e Quantico do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -286,7 +295,7 @@
         <!-- Seção Hero: Introdução, Logo e Chamada para Ação -->
         <section id="hero" class="text-center">
             <div class="relative z-20 pt-24">
-                <h1 class="font-quantico text-5xl md:text-7xl font-bold mb-4 leading-tight">Energia Solar em Curitiba</h1>
+                <h1 class="font-quantico text-5xl md:text-7xl font-bold mb-4 leading-tight">Painéis Solares</h1>
                 <div class="bg-black bg-opacity-40 p-4 rounded-lg max-w-4xl mx-auto mb-8"> 
                     <p class="text-xl md:text-3xl font-semibold text-white"> 
                         Geração local, limpa, silenciosa, durável e elegante!
