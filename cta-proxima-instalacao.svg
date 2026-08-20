@@ -3,20 +3,20 @@
   <desc id="ctaDesc">Espaço reservado para a próxima instalação da Frota Solar — pode ser a sua</desc>
   <rect width="600" height="400" rx="16" fill="#E0E7FF"/>
   <rect x="16" y="16" width="568" height="368" rx="10" fill="none" stroke="#1d4ed8" stroke-width="3" stroke-dasharray="10 8"/>
-  <g transform="translate(300,128)">
-    <circle cx="0" cy="0" r="36" fill="#fcb040"/>
+  <g transform="translate(300,108)">
+    <circle cx="0" cy="0" r="30" fill="#fcb040"/>
     <g stroke="#fcb040" stroke-width="5" stroke-linecap="round">
-      <line x1="0" y1="-55" x2="0" y2="-46"/>
-      <line x1="0" y1="46" x2="0" y2="55"/>
-      <line x1="-55" y1="0" x2="-46" y2="0"/>
-      <line x1="46" y1="0" x2="55" y2="0"/>
-      <line x1="-39" y1="-39" x2="-33" y2="-33"/>
-      <line x1="33" y1="33" x2="39" y2="39"/>
-      <line x1="-39" y1="39" x2="-33" y2="33"/>
-      <line x1="33" y1="-33" x2="39" y2="-39"/>
+      <line x1="0" y1="-48" x2="0" y2="-40"/>
+      <line x1="0" y1="40" x2="0" y2="48"/>
+      <line x1="-48" y1="0" x2="-40" y2="0"/>
+      <line x1="40" y1="0" x2="48" y2="0"/>
+      <line x1="-34" y1="-34" x2="-28" y2="-28"/>
+      <line x1="28" y1="28" x2="34" y2="34"/>
+      <line x1="-34" y1="34" x2="-28" y2="28"/>
+      <line x1="28" y1="-28" x2="34" y2="-34"/>
     </g>
   </g>
-  <text x="300" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="#1d4ed8">Sua instalação aqui</text>
-  <text x="300" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="29" fill="#334155">Seja o próximo case de sucesso</text>
-  <text x="300" y="324" text-anchor="middle" font-family="Arial, sans-serif" font-size="29" fill="#334155">da Frota Solar</text>
+  <text x="300" y="226" text-anchor="middle" font-family="Arial, sans-serif" font-size="46" font-weight="700" fill="#1d4ed8">Sua instalação aqui</text>
+  <text x="300" y="282" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="#334155">Seja o próximo case</text>
+  <text x="300" y="324" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="#334155">de sucesso da Frota Solar</text>
 </svg>
