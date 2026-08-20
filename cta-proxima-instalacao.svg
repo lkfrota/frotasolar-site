@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-labelledby="ctaTitle ctaDesc">
+  <title id="ctaTitle">Sua instalação solar aqui</title>
+  <desc id="ctaDesc">Espaço reservado para a próxima instalação da Frota Solar — pode ser a sua</desc>
+  <rect width="600" height="400" rx="16" fill="#E0E7FF"/>
+  <rect x="16" y="16" width="568" height="368" rx="10" fill="none" stroke="#1d4ed8" stroke-width="3" stroke-dasharray="10 8"/>
+  <g transform="translate(300,158)">
+    <circle cx="0" cy="0" r="34" fill="#fcb040"/>
+    <g stroke="#fcb040" stroke-width="4" stroke-linecap="round">
+      <line x1="0" y1="-52" x2="0" y2="-44"/>
+      <line x1="0" y1="44" x2="0" y2="52"/>
+      <line x1="-52" y1="0" x2="-44" y2="0"/>
+      <line x1="44" y1="0" x2="52" y2="0"/>
+      <line x1="-37" y1="-37" x2="-31" y2="-31"/>
+      <line x1="31" y1="31" x2="37" y2="37"/>
+      <line x1="-37" y1="37" x2="-31" y2="31"/>
+      <line x1="31" y1="-31" x2="37" y2="-37"/>
+    </g>
+  </g>
+  <text x="300" y="248" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#1d4ed8">Sua instalação aqui</text>
+  <text x="300" y="284" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#334155">Seja o próximo case de sucesso</text>
+  <text x="300" y="308" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#334155">da Frota Solar</text>
+</svg>
